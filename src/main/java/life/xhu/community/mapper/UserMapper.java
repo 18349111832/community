@@ -3,6 +3,8 @@ package life.xhu.community.mapper;
 import life.xhu.community.model.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 /**
  * @author 橘子吃柚子
@@ -14,4 +16,6 @@ public interface UserMapper {
     void insert(User user);
 
 
+    @Select("select *from user where token=#{token}")
+    User findByToken(@Param("token") String token);
 }
